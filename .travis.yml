@@ -39,8 +39,6 @@ install:
 
 after_failure:
   - tail /tmp/snmpsimd.log
-  - cat storage/logs/*.log
-  - cat logs/*.log
 
 after_success:
   - scripts/deploy-docs.sh
@@ -52,3 +50,8 @@ before_script:
 
 script:
   - php artisan dev:check ci
+
+after_script:
+  - cat storage/logs/*.log
+  - cat logs/*.log
+  - php artisan tinker --execute="dump(DB::select('SHOW TABLES'))"
