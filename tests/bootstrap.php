@@ -84,6 +84,9 @@ if (getenv('DBTEST')) {
         $migrate_result = Artisan::call('migrate', ['--seed' => true, '--env' => 'testing', '--database' => 'testing']);
         $migrate_output = Artisan::output();
     }
+    
+    var_dump($migrate_result);
+    var_dump($migrate_output);
     unset($db_config);
 }
 
